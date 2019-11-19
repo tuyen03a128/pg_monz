@@ -1,8 +1,12 @@
 #!/bin/bash
 
-PGSHELL_NODE="$1"
+PGSHELL_CONFDIR="$1"
+PGSHELL_NODE="$2"
 
-pcp_node_info -h localhost -U pgpool $PGSHELL_NODE -w 2>/dev/null
+# Load the psql connection option parameters.
+source $PGSHELL_CONFDIR/pgpool_funcs.conf
+
+export PGPASSWORD=$PGPOOLPASSWORD; pcp_node_info -h localhost -U pgpool $PGSHELL_NODE -w 2>/dev/null
 if [ $? -ne 0 ]; then
 	echo 0
 fi
