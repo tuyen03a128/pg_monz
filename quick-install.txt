@@ -38,11 +38,15 @@
    PGPOOLROLE=postgres
    PGPOOLDATABASE=postgres
    PGPOOLCONF=/usr/local/etc/pgpool.conf
+   PGPOOLPASSWORD=password
+   PCPPASSFILE=/usr/local/etc/.pcppass
    ----
 
    (*) the definition of configuration directory is in the tempalte macro.
        {$PGSCRIPT_CONFDIR}
        {$PGPOOLSCRIPTS_CONFDIR}
+
+   (*) the .pcppass must have permission 0600. It does not work if the permission is less strict.
 
 3. Copy usr-local-bin files (*.sh) to "/usr/local/bin"
 
